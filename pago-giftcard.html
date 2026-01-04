@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pagar Gift Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+    }
+    .pago-container {
+      background: #ffec40;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+      padding: 38px 38px 32px 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 380px;
+      width: 100%;
+      margin: 64px auto;
+    }
+    .pago-container h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: #222;
+      text-align: center;
+    }
+    .pago-metodos {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      width: 100%;
+      margin-top: 12px;
+    }
+    .pago-metodo {
+      background: #fff;
+      color: #222;
+      border-radius: 12px;
+      border: 2px solid #ff9f45;
+      font-size: 1.15rem;
+      font-weight: 600;
+      padding: 18px 0;
+      text-align: center;
+      cursor: pointer;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .pago-metodo:hover {
+      border: 2px solid #ff6426;
+      box-shadow: 0 2px 12px rgba(255,100,38,0.10);
+    }
+    @media (max-width: 600px) {
+      .pago-container {
+        padding: 18px 8px 18px 8px;
+        max-width: 98vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" style="width:100vw;min-width:100vw;left:0;right:0;position:relative;">
+    <div class="header-content" style="max-width:1200px;margin:0 auto;">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo cafetería">
+      </div>
+      <nav class="nav">
+        <a href="sucursales.html">Sucursales</a>
+        <a href="productos.html">Productos</a>
+        <a href="sabores.html">Sabores</a>
+        <a href="empresa.html">Empresa</a>
+        <a href="novedades.html">Novedades</a>
+      </nav>
+      <a href="#" class="cta-button">Pedí Online</a>
+    </div>
+  </header>
+
+  <div class="pago-container">
+    <h2>Seleccioná un método de pago</h2>
+    <div class="pago-metodos">
+      <div class="pago-metodo">Mercado Pago</div>
+      <div class="pago-metodo">Tarjeta de crédito</div>
+      <div class="pago-metodo">Tarjeta de débito</div>
+    </div>
+  </div>
+</body>
+</html>
+

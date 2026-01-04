@@ -1,0 +1,1162 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIABLES DE ESTILO (luego las modificamos) */
+:root {
+  --color-background: #ffffff;
+  --color-text: #222222;
+  --color-muted: #777777;
+
+  --color-accent: #ff6426;   /* color cafetería */
+  --color-header-text: #ffceba;
+
+  --color-border: #e5e5e5;
+}
+
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* CONTENEDOR GENERAL */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.header {
+  background-color: #ff6426;
+  overflow: visible;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+
+.nav {
+  display: flex;
+  align-items: center; /* centra los links */
+  gap: 48px;
+}
+
+.nav a {
+  line-height: 1;      /* evita que se “caigan” */
+}
+
+
+.nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+/* CTA BUTTON - Pedí Online */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fff 0%, #fff8f5 100%);
+  color: #ff6426;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), inset 0 -2px 0 rgba(255, 100, 38, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 100, 38, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), inset 0 -2px 0 rgba(255, 100, 38, 0.15);
+  background: linear-gradient(135deg, #fff 0%, #ffede5 100%);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* TÍTULO DE PÁGINA */
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 48px 0 32px;
+}
+
+/* GRID DE NOVEDADES */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.news-card {
+  border: 1px solid var(--color-border);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background-color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-width: 300px;
+  max-width: 300px;
+  height: auto;            /* ✅ */
+  position: relative;
+  overflow: visible;      /* ✅ */
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+
+.news-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.news-title {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.news-excerpt {
+  font-size: 14.5px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.news-link {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding: 24px 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+/* SLIDER WRAPPER */
+.news-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+/* CONTENEDOR HORIZONTAL */
+.news-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+/* CARD (reutilizamos la misma estética) */
+.news-card {
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+}
+.cards-section {
+  padding: 0 24px;
+  margin-bottom: 80px;
+}
+
+
+/* FLECHAS */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--color-accent);
+  padding: 0 12px;
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.nav {
+  display: flex;
+  gap: 48px; /* separa más los links */
+}
+:root {
+  --font-main: 'Inter', sans-serif;
+}
+.nav a {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.nav a,
+.nav a:visited,
+.nav a:hover,
+.nav a:active {
+  color: #ffceba !important;
+  text-decoration: none;
+}
+.nav a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+.section-title {
+  margin-bottom: 36px;
+  font-size: 28px;
+  font-weight: 700;
+}
+.section-subtitle {
+  margin-top: -18px;      /* lo acerca al título */
+  margin-bottom: 32px;   /* separa del carrusel */
+  font-size: 16px;
+  color: var(--color-muted);
+}
+
+
+.section-title {
+  margin-left: 44px; /* alineado con el inicio de las cards */
+}
+.card-tortas .tortas-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+
+.card-tortas:hover .tortas-carousel {
+  opacity: 1;
+}
+
+.card-tortas:hover > *:not(.tortas-carousel) {
+  opacity: 0;
+}
+.card-tartas .tartas-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+
+.card-tartas:hover .tartas-carousel {
+  opacity: 1;
+}
+
+.card-tartas:hover > *:not(.tartas-carousel) {
+  opacity: 0;
+}
+
+
+/* =========================
+   NORMALIZACIÓN DE IMÁGENES
+========================= */
+
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* no se estiran */
+}
+section {
+  scroll-margin-top: 120px;
+}
+/* =========================
+   NAVEGACIÓN TIPO PESTAÑAS
+========================= */
+
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+/* =========================
+   HOVER IMÁGENES – TORTAS
+========================= */
+
+.card-tortas {
+  position: relative;
+  overflow: hidden;
+}
+
+.tortas-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+
+.tortas-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-tortas:hover .tortas-carousel {
+  opacity: 1;
+}
+
+.card-tortas:hover > *:not(.tortas-carousel) {
+  opacity: 0;
+}
+
+/* =========================
+   HOVER IMÁGENES – TARTAS
+========================= */
+
+.card-tartas {
+  position: relative;
+  overflow: hidden;
+}
+
+.tartas-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+
+.tartas-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-tartas:hover .tartas-carousel {
+  opacity: 1;
+}
+
+.card-tartas:hover > *:not(.tartas-carousel) {
+  opacity: 0;
+}
+/* =========================
+   SISTEMA DE VISTAS
+========================= */
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+/* =========================
+   SUCURSALES – BASE
+========================= */
+
+.sucursal-card {
+  min-width: 280px;
+  max-width: 280px;
+  height: 260px;
+}
+/* =========================
+   SUCURSALES – MAPA MINI (OPCIÓN 1)
+========================= */
+
+.style-1 .map-mini {
+  margin-top: 12px;
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.style-1 .map-mini iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* =========================
+   SUCURSALES – GRID
+========================= */
+.sucursales-slider {
+  display: flex;
+  gap: 28px;
+  overflow-x: hidden;     /* sin barra */
+  scroll-behavior: smooth;
+}
+
+
+/* Card sucursal */
+.sucursal-card {
+  height: auto; /* 🔥 evita cards gigantes */
+}
+
+/* Mapa mini */
+.map-mini {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.map-mini iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+/* =========================
+   OPCIÓN 2 – MAPA HOVER ZOOM
+========================= */
+
+.sucursal-hover-map {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sucursal-hover-map:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+.sucursal-hover-map .map-mini {
+  transition: transform 0.35s ease;
+}
+
+.sucursal-hover-map:hover .map-mini {
+  transform: scale(1.08);
+}
+/* =========================
+   OPCIÓN 3 – BOTÓN MAPA
+========================= */
+
+.map-button {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  align-self: flex-start;
+  transition: background-color 0.25s ease;
+}
+
+.map-button:hover {
+  background-color: #e5551f;
+}
+/* =========================
+   OPCIÓN 4 – MAPA OVERLAY
+========================= */
+
+.sucursal-card {
+  position: relative;
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 28px; /* 🔥 respeta el padding de la card */
+  background: #fff;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 2;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.map-overlay iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.sucursal-card:hover .map-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =========================
+   REGLAS DE HOVER CONTROLADAS
+   (evita que sucursales se pongan blancas)
+========================= */
+
+/* ⛔ Anulamos cualquier hover global */
+.news-card:hover > * {
+  opacity: 1;
+}
+
+/* =========================
+   EFECTOS SOLO DONDE CORRESPONDE
+========================= */
+
+/* TORTAS */
+.card-tortas:hover > *:not(.tortas-carousel) {
+  opacity: 0;
+}
+
+/* TARTAS */
+.card-tartas:hover > *:not(.tartas-carousel) {
+  opacity: 0;
+}
+
+/* SANDWICHES (si existe imagen flotante) */
+.card-sandwiches:hover > *:not(.sandwiches-float) {
+  opacity: 0.25;
+}
+/* =========================
+   FIX DEFINITIVO – SUCURSALES
+   Evita cards en blanco
+========================= */
+
+/* Las sucursales NO apagan su contenido */
+.sucursal-card:hover > * {
+  opacity: 1 !important;
+}
+
+/* Overlay solo afecta al mapa */
+.sucursal-card .map-overlay {
+  pointer-events: none;
+}
+
+/* =========================
+   EFECTOS ESPECÍFICOS (SE MANTIENEN)
+========================= */
+
+/* Tortas */
+.card-tortas:hover > *:not(.tortas-carousel) {
+  opacity: 0;
+}
+
+/* Tartas */
+.card-tartas:hover > *:not(.tartas-carousel) {
+  opacity: 0;
+}
+
+/* Sandwiches (si existiera) */
+.card-sandwiches:hover > *:not(.sandwiches-float) {
+  opacity: 0.25;
+}
+/* =========================
+   SUCURSALES – CARRUSEL
+========================= */
+
+
+/* Cards de sucursales en carrusel */
+.sucursales-slider .sucursal-card {
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+/* =========================
+   SUCURSALES – CARRUSEL LIMPIO
+========================= */
+
+/* Flechas más grandes solo para sucursales */
+.arrow-sucursales {
+  font-size: 42px;        /* 🔥 más grandes */
+  padding: 0 18px;
+}
+/* FIX DEFINITIVO — ALTURA SUCURSALES */
+/* FIX — ancho real del carrusel */
+.news-slider-wrapper {
+  overflow: hidden;
+}
+/* =========================
+   SUCURSALES – CARRUSEL FINAL (ESTABLE)
+========================= */
+
+.news-slider-wrapper {
+  position: relative;
+  overflow: hidden; /* 🔥 corta visualmente */
+}
+
+.sucursales-slider {
+  display: flex;
+  gap: 28px;
+  scroll-behavior: smooth;
+  overflow-x: scroll; /* 🔥 permite mover */
+  padding-bottom: 8px;
+}
+
+/* Ocultar scrollbar */
+.sucursales-slider::-webkit-scrollbar {
+  display: none;
+}
+.sucursales-slider {
+  scrollbar-width: none;
+}
+
+/* Cards */
+.sucursales-slider .sucursal-card {
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+/* Flechas más grandes */
+.arrow-sucursales {
+  font-size: 42px;
+  padding: 0 18px;
+  z-index: 5;
+}
+/* =========================
+   FIX REAL CARRUSEL SUCURSALES
+========================= */
+
+#slider-sucursales {
+  display: flex;
+  gap: 28px;
+  width: max-content;       /* 🔥 CLAVE: permite crecer */
+  overflow: visible;
+}
+
+.news-slider-wrapper {
+  overflow: hidden;         /* mantiene oculto lo que no se ve */
+}
+/* =========================
+   FIX DEFINITIVO CARRUSEL SUCURSALES
+========================= */
+
+.news-slider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+#slider-sucursales {
+  display: flex;
+  gap: 28px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  flex: 1;                 /* 🔥 ocupa el espacio entre flechas */
+}
+
+/* Flechas siempre visibles */
+.arrow-sucursales {
+  flex-shrink: 0;
+  z-index: 10;
+}
+.giftcard-hero .cta {
+  width: 100%;
+}
+
+.giftcard-hero .cta a {
+  width: 100%;              /* 🔥 MISMO ANCHO que el bloque amarillo */
+  display: block;
+  text-align: center;
+}
+
+/* =========================
+   IMAGEN PREVIEW SUCURSAL
+========================= */
+.sucursal-preview {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+/* =========================
+   NOVEDADES SECTION - REDESIGN
+========================= */
+
+.novedades-section {
+  padding: 80px 0 100px;
+  background: linear-gradient(180deg, #fffaf7 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.novedades-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #f0e6e0 50%, transparent 100%);
+}
+
+.novedades-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.novedades-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.novedades-header-left {
+  flex: 1;
+}
+
+.novedades-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(255, 100, 38, 0.3);
+}
+
+.novedades-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+.novedades-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #3d2314;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.novedades-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #777;
+  margin: 0;
+}
+
+/* Page Navigation Component */
+.page-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 8px 8px 8px 20px;
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(61, 35, 20, 0.08);
+  border: 1px solid #f5ebe5;
+}
+
+.page-nav-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3d2314;
+  min-width: 80px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.page-nav-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.page-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #f8f4f2 0%, #f0e6e0 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3d2314;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-nav-btn:hover {
+  background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 100, 38, 0.3);
+}
+
+.page-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.page-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  background: #f0e6e0;
+}
+
+.page-nav-btn:disabled:hover {
+  background: #f0e6e0;
+  color: #3d2314;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Label animation */
+.page-nav-label.changing {
+  animation: labelChange 0.3s ease;
+}
+
+@keyframes labelChange {
+  0% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Page Content Placeholder */
+.page-content-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  background: linear-gradient(135deg, #fffaf7 0%, #fff 50%, #fff4f0 100%);
+  border-radius: 24px;
+  border: 2px dashed #f0e6e0;
+  margin-top: 32px;
+}
+
+.page-content-placeholder p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #777;
+  font-style: italic;
+}
+
+/* Cards Grid */
+.novedades-grid {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.novedades-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Card */
+.novedad-card {
+  min-width: 360px;
+  max-width: 360px;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(61, 35, 20, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid #f5ebe5;
+  flex-shrink: 0;
+}
+
+.novedad-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(61, 35, 20, 0.12);
+}
+
+/* Card Image Area */
+.novedad-card-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff4f0 0%, #ffe8de 100%);
+}
+
+.novedad-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.novedad-card:hover .novedad-card-image img {
+  transform: scale(1.08);
+}
+
+/* Card Icon (for cards without image) */
+.novedad-card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 30px rgba(255, 100, 38, 0.3);
+  transition: all 0.3s ease;
+}
+
+.novedad-card:hover .novedad-card-icon {
+  transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+}
+
+.novedad-card-icon svg {
+  width: 36px;
+  height: 36px;
+  color: white;
+}
+
+/* Card Content */
+.novedad-card-content {
+  padding: 28px;
+}
+
+.novedad-card-tag {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff6426;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 14px;
+  position: relative;
+  padding-left: 16px;
+}
+
+.novedad-card-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #ff6426;
+  border-radius: 50%;
+}
+
+.novedad-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3d2314;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.novedad-card-excerpt {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Card CTA */
+.novedad-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff6426;
+  text-decoration: none;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #fff4f0 0%, #ffe8de 100%);
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+
+.novedad-card-cta:hover {
+  background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+  color: white;
+  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(255, 100, 38, 0.3);
+}
+
+.novedad-card-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.novedad-card-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Card Variants */
+.novedad-card.card-sucursales .novedad-card-image {
+  background: linear-gradient(135deg, #3d2314 0%, #6b4a36 100%);
+}
+
+.novedad-card.card-giftcard .novedad-card-image {
+  background: linear-gradient(135deg, #ff6426 0%, #ffb347 100%);
+}
+
+.novedad-card.card-cumple .novedad-card-image {
+  background: linear-gradient(135deg, #ff8c5a 0%, #ffceba 100%);
+}
+
+/* Decorative Elements */
+.novedad-card-image::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, white 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Animation on scroll */
+.novedad-card {
+  animation: cardFadeIn 0.6s ease-out both;
+}
+
+.novedad-card:nth-child(1) { animation-delay: 0.1s; }
+.novedad-card:nth-child(2) { animation-delay: 0.2s; }
+.novedad-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .novedades-section {
+    padding: 60px 0 80px;
+  }
+
+  .novedades-title {
+    font-size: 36px;
+  }
+
+  .novedades-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .novedad-card {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .novedad-card-image {
+    height: 160px;
+  }
+
+  .novedad-card-content {
+    padding: 24px;
+  }
+
+  .novedad-card-title {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

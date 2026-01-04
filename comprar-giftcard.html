@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gift Card | Marca Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .header {
+      background-color: #ff6426;
+      overflow: visible;
+      padding-top: 4px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-content {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    .logo img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+    .nav a {
+      color: #ffceba;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .nav a.active {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+      opacity: 0.85;
+    }
+    .cta-button {
+      background-color: #ffceba;
+      color: #ff6426;
+      padding: 10px 18px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .giftcard-main {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 48px auto 0 auto;
+      width: 100%;
+      padding: 0 24px;
+    }
+    .giftcard-hero {
+      flex: 1 1 340px;
+      background: #ffec40;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+      padding: 38px 38px 32px 38px;
+      min-width: 320px;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+    .giftcard-cards-col {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0;
+      min-width: 320px;
+      max-width: 400px;
+      position: relative;
+    }
+    .giftcard-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #222;
+    }
+    .giftcard-hero .highlight {
+      color: #ffe14d;
+      font-weight: 700;
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .giftcard-hero p {
+      color: #222;
+      font-size: 1.15rem;
+      margin-bottom: 18px;
+    }
+    .giftcard-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin: 0;
+      align-items: flex-end;
+      position: relative;
+      width: 100%;
+      justify-content: center;
+    }
+    .giftcard-card {
+      background: #fff;
+      color: #222;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+      padding: 36px 60px 32px 44px;
+      min-width: 260px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-weight: 700;
+      font-size: 2.1rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .giftcard-card.card-gray {
+      background: #ff7e5e;
+      color: #fff;
+      transform: skew(-15deg, -5deg) rotate(-12deg);
+      box-shadow: 0 4px 18px rgba(255,126,94,0.18);
+    }
+    .giftcard-card.card-blue {
+      background: #ffba3b;
+      color: #fff;
+      transform: skew(-15deg, -5deg) rotate(-4deg);
+      box-shadow: 0 4px 18px rgba(255,186,59,0.18);
+    }
+    .giftcard-card.card-yellow {
+      background: #ff801f;
+      color: #fff;
+      transform: skew(-15deg, -5deg) rotate(8deg);
+      box-shadow: 0 4px 18px rgba(255,128,31,0.18);
+    }
+    .giftcard-card .brand, .giftcard-card .amount {
+      transform: skew(15deg, 5deg) rotate(8deg);
+      display: block;
+    }
+    /* Eliminar colores viejos para evitar conflictos */
+    .giftcard-card .amount {
+      font-size: 2.6rem;
+      margin-top: 18px;
+    }
+    .giftcard-card .brand {
+      font-size: 1.3rem;
+      font-weight: 400;
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      letter-spacing: 1.5px;
+      opacity: 0.7;
+    }
+    .giftcard-hero .cta {
+      display: flex;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .giftcard-hero .cta a {
+      background: #ffe14d;
+      color: #222;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .giftcard-hero .cta a:hover {
+      background: #fffbe6;
+    }
+    .giftcard-hero .cta .secondary {
+      background: none;
+      color: #ffe14d;
+      border: 2px solid #ffe14d;
+    }
+    .giftcard-hero .cta .secondary:hover {
+      background: #ffe14d;
+      color: #222;
+    }
+    .giftcard-hero .expires {
+      color: #ff9f45;
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+    @media (max-width: 700px) {
+      .giftcard-hero {
+        padding: 32px 10px 24px 10px;
+      }
+      .giftcard-cards {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo cafetería">
+      </div>
+      <nav class="nav">
+        <a href="sucursales.html">Sucursales</a>
+        <a href="productos.html">Productos</a>
+        <a href="sabores.html">Sabores</a>
+        <a href="empresa.html">Empresa</a>
+        <a href="novedades.html">Novedades</a>
+      </nav>
+      <a href="#" class="cta-button">Pedí Online</a>
+    </div>
+  </header>
+  <div class="giftcard-main">
+    <div class="giftcard-hero">
+      <h1>¡Conseguí una <span class="highlight">gift card de $200!</span></h1>
+      <p>Abrí una cuenta online en Marca Demo antes del <b>31/01</b>, completá unos simples pasos y recibí una gift card del monto que elijas. ¡Así de fácil!</p>
+      <p>No necesitás códigos, mods ni trucos—es solo nuestra forma de agradecerte por sumarte a la familia Marca Demo.</p>
+      <div class="cta">
+        <a href="pago-giftcard.html" style="display:block;text-align:center;width:90%;margin:0 auto 0 auto;">Ir a pagar</a>
+      </div>
+      <div class="expires">Apurate—esta promo vence el 31/01</div>
+    </div>
+    <div class="giftcard-cards-col">
+      <div class="giftcard-cards">
+        <div class="giftcard-card card-gray">
+          <span class="brand">Gift card Cumpleaños</span>
+          <span style="color:#1bc900; font-size:1.1rem; font-weight:600; margin-top:10px; align-self:flex-end;">Valor: $10.000</span>
+        </div>
+        <div class="giftcard-card card-blue">
+          <span class="brand">Gift card de celebración</span>
+        </div>
+        <div class="giftcard-card card-yellow">
+          <span class="brand">Gift card de aniversario</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
