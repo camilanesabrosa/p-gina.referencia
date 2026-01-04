@@ -2,274 +2,688 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Gift Card | Marca Demo</title>
+  <title>Gift Card | Espiga Mágica</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .header {
-      background-color: #ff6426;
-      overflow: visible;
-      padding-top: 4px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .header-content {
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-    }
-    .logo img {
-      width: 140px;
-      height: 140px;
-      object-fit: contain;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-    }
-    .nav a {
-      color: #ffceba;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      text-decoration: none;
-      line-height: 1;
-    }
-    .nav a.active {
-      font-weight: 700;
-      text-decoration: underline;
-    }
-    .nav a:hover {
-      text-decoration: underline;
-      opacity: 0.85;
-    }
-    .cta-button {
-      background-color: #ffceba;
-      color: #ff6426;
-      padding: 10px 18px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-    }
-    body {
-      background: #fff;
-      color: #222;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
+    /* Gift Card Page Styles */
+    .giftcard-page {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .giftcard-main {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: stretch;
-      gap: 48px;
-      max-width: 1100px;
-      margin: 48px auto 0 auto;
-      width: 100%;
-      padding: 0 24px;
-    }
-    .giftcard-hero {
-      flex: 1 1 340px;
-      background: #ffec40;
-      border-radius: 24px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.13);
-      padding: 38px 38px 32px 38px;
-      min-width: 320px;
-      max-width: 440px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      background: linear-gradient(180deg, #fffaf7 0%, #fff 40%, #fff4f0 100%);
       position: relative;
       overflow: hidden;
     }
-    .giftcard-cards-col {
-      flex: 1 1 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 0;
-      min-width: 320px;
-      max-width: 400px;
-      position: relative;
-    }
-    .giftcard-hero h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #222;
-    }
-    .giftcard-hero .highlight {
-      color: #ffe14d;
-      font-weight: 700;
-      font-size: 2.2rem;
-      display: block;
-      margin-bottom: 18px;
-    }
-    .giftcard-hero p {
-      color: #222;
-      font-size: 1.15rem;
-      margin-bottom: 18px;
-    }
-    .giftcard-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin: 0;
-      align-items: flex-end;
-      position: relative;
-      width: 100%;
-      justify-content: center;
-    }
-    .giftcard-card {
-      background: #fff;
-      color: #222;
-      border-radius: 20px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
-      padding: 36px 60px 32px 44px;
-      min-width: 260px;
-      min-height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      font-weight: 700;
-      font-size: 2.1rem;
-      transition: box-shadow 0.2s, transform 0.2s;
-      position: relative;
-    }
-    .giftcard-card.card-gray {
-      background: #ff7e5e;
-      color: #fff;
-      transform: skew(-15deg, -5deg) rotate(-12deg);
-      box-shadow: 0 4px 18px rgba(255,126,94,0.18);
-    }
-    .giftcard-card.card-blue {
-      background: #ffba3b;
-      color: #fff;
-      transform: skew(-15deg, -5deg) rotate(-4deg);
-      box-shadow: 0 4px 18px rgba(255,186,59,0.18);
-    }
-    .giftcard-card.card-yellow {
-      background: #ff801f;
-      color: #fff;
-      transform: skew(-15deg, -5deg) rotate(8deg);
-      box-shadow: 0 4px 18px rgba(255,128,31,0.18);
-    }
-    .giftcard-card .brand, .giftcard-card .amount {
-      transform: skew(15deg, 5deg) rotate(8deg);
-      display: block;
-    }
-    /* Eliminar colores viejos para evitar conflictos */
-    .giftcard-card .amount {
-      font-size: 2.6rem;
-      margin-top: 18px;
-    }
-    .giftcard-card .brand {
-      font-size: 1.3rem;
-      font-weight: 400;
+
+    /* Decorative background elements */
+    .giftcard-page::before {
+      content: '';
       position: absolute;
-      top: 28px;
-      left: 32px;
-      letter-spacing: 1.5px;
-      opacity: 0.7;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 100, 38, 0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .giftcard-hero .cta {
+
+    .giftcard-page::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 140, 90, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Main container */
+    .giftcard-hero-section {
+      padding: 80px 24px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header row */
+    .giftcard-header-row {
       display: flex;
-      gap: 18px;
-      margin-top: 18px;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 60px;
     }
-    .giftcard-hero .cta a {
-      background: #ffe14d;
-      color: #222;
+
+    .giftcard-header-left {
+      flex: 1;
+    }
+
+    .giftcard-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(255, 100, 38, 0.3);
+    }
+
+    .giftcard-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .giftcard-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 600;
+      color: #3d2314;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .giftcard-main-title .highlight {
+      color: #ff6426;
+      position: relative;
+    }
+
+    .giftcard-main-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: linear-gradient(90deg, rgba(255, 100, 38, 0.15) 0%, rgba(255, 140, 90, 0.1) 100%);
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .giftcard-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      color: #777;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    /* Main content grid */
+    .giftcard-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* Left side - Info */
+    .giftcard-info {
+      position: relative;
+    }
+
+    .giftcard-info-card {
+      background: white;
+      border-radius: 32px;
+      padding: 48px;
+      box-shadow: 0 20px 60px rgba(61, 35, 20, 0.08);
+      border: 1px solid #f5ebe5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .giftcard-info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #ff6426 0%, #ff8c5a 50%, #ffceba 100%);
+    }
+
+    .info-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #fff4f0 0%, #ffe8de 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .info-icon svg {
+      width: 32px;
+      height: 32px;
+      color: #ff6426;
+    }
+
+    .info-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #3d2314;
+      margin-bottom: 16px;
+    }
+
+    .info-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 36px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: #555;
+      padding: 12px 0;
+      border-bottom: 1px solid #f5ebe5;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list .check-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-list .check-icon svg {
+      width: 12px;
+      height: 12px;
+      color: white;
+    }
+
+    /* CTA Button */
+    .giftcard-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 20px 40px;
+      background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
       font-weight: 700;
-      padding: 12px 28px;
-      border-radius: 8px;
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: background 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 30px rgba(255, 100, 38, 0.35);
+      position: relative;
+      overflow: hidden;
     }
-    .giftcard-hero .cta a:hover {
-      background: #fffbe6;
+
+    .giftcard-cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
     }
-    .giftcard-hero .cta .secondary {
-      background: none;
-      color: #ffe14d;
-      border: 2px solid #ffe14d;
+
+    .giftcard-cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 45px rgba(255, 100, 38, 0.4);
     }
-    .giftcard-hero .cta .secondary:hover {
-      background: #ffe14d;
-      color: #222;
+
+    .giftcard-cta-btn:hover::before {
+      left: 100%;
     }
-    .giftcard-hero .expires {
-      color: #ff9f45;
-      font-size: 1rem;
-      margin-top: 12px;
+
+    .giftcard-cta-btn svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
     }
-    @media (max-width: 700px) {
-      .giftcard-hero {
-        padding: 32px 10px 24px 10px;
+
+    .giftcard-cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Promo note */
+    .promo-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #fff4f0 0%, #ffe8de 100%);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #ff6426;
+      font-weight: 600;
+    }
+
+    .promo-note svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Right side - Cards display */
+    .giftcard-display {
+      position: relative;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Floating gift cards */
+    .floating-card {
+      position: absolute;
+      width: 280px;
+      height: 170px;
+      border-radius: 20px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .floating-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .floating-card:hover {
+      transform: translateY(-15px) scale(1.02) !important;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card 1 - Orange */
+    .floating-card.card-1 {
+      background: linear-gradient(135deg, #ff6426 0%, #ff8c5a 100%);
+      color: white;
+      top: 30px;
+      right: 40px;
+      transform: rotate(-8deg);
+      z-index: 3;
+    }
+
+    /* Card 2 - Coral */
+    .floating-card.card-2 {
+      background: linear-gradient(135deg, #ff8c5a 0%, #ffb088 100%);
+      color: white;
+      top: 140px;
+      left: 20px;
+      transform: rotate(5deg);
+      z-index: 2;
+    }
+
+    /* Card 3 - Cream/Gold */
+    .floating-card.card-3 {
+      background: linear-gradient(135deg, #3d2314 0%, #5a3a28 100%);
+      color: #ffceba;
+      bottom: 60px;
+      right: 60px;
+      transform: rotate(-3deg);
+      z-index: 1;
+    }
+
+    .card-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+    }
+
+    .card-type {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .card-logo {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-logo svg {
+      width: 28px;
+      height: 28px;
+      opacity: 0.9;
+    }
+
+    /* Decorative particles */
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ff6426;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+
+    .particle-1 { top: 20%; left: 10%; animation: float 4s ease-in-out infinite; }
+    .particle-2 { top: 60%; right: 5%; animation: float 5s ease-in-out infinite 1s; width: 12px; height: 12px; }
+    .particle-3 { bottom: 30%; left: 15%; animation: float 6s ease-in-out infinite 2s; width: 6px; height: 6px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Footer */
+    .giftcard-footer {
+      border-top: 1px solid #f0e6e0;
+      padding: 24px 0;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #777;
+      background: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .giftcard-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
       }
-      .giftcard-cards {
+
+      .giftcard-display {
+        order: -1;
+        height: 400px;
+      }
+
+      .giftcard-main-title {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .giftcard-hero-section {
+        padding: 50px 16px 80px;
+      }
+
+      .giftcard-header-row {
         flex-direction: column;
-        gap: 16px;
+      }
+
+      .giftcard-main-title {
+        font-size: 32px;
+      }
+
+      .giftcard-info-card {
+        padding: 32px 24px;
+      }
+
+      .floating-card {
+        width: 220px;
+        height: 140px;
+        padding: 20px 24px;
+      }
+
+      .card-value {
+        font-size: 24px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <img src="images/logo.png" alt="Logo cafetería">
-      </div>
-      <nav class="nav">
-        <a href="sucursales.html">Sucursales</a>
-        <a href="productos.html">Productos</a>
-        <a href="sabores.html">Sabores</a>
-        <a href="empresa.html">Empresa</a>
-        <a href="novedades.html">Novedades</a>
-      </nav>
-      <a href="#" class="cta-button">Pedí Online</a>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo cafetería">
     </div>
-  </header>
-  <div class="giftcard-main">
-    <div class="giftcard-hero">
-      <h1>¡Conseguí una <span class="highlight">gift card de $200!</span></h1>
-      <p>Abrí una cuenta online en Marca Demo antes del <b>31/01</b>, completá unos simples pasos y recibí una gift card del monto que elijas. ¡Así de fácil!</p>
-      <p>No necesitás códigos, mods ni trucos—es solo nuestra forma de agradecerte por sumarte a la familia Marca Demo.</p>
-      <div class="cta">
-        <a href="pago-giftcard.html" style="display:block;text-align:center;width:90%;margin:0 auto 0 auto;">Ir a pagar</a>
-      </div>
-      <div class="expires">Apurate—esta promo vence el 31/01</div>
-    </div>
-    <div class="giftcard-cards-col">
-      <div class="giftcard-cards">
-        <div class="giftcard-card card-gray">
-          <span class="brand">Gift card Cumpleaños</span>
-          <span style="color:#1bc900; font-size:1.1rem; font-weight:600; margin-top:10px; align-self:flex-end;">Valor: $10.000</span>
-        </div>
-        <div class="giftcard-card card-blue">
-          <span class="brand">Gift card de celebración</span>
-        </div>
-        <div class="giftcard-card card-yellow">
-          <span class="brand">Gift card de aniversario</span>
-        </div>
-      </div>
-    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="sucursales.html">Sucursales</a>
+      <a href="productos.html">Productos</a>
+      <a href="sabores.html">Sabores</a>
+      <a href="empresa.html">Empresa</a>
+      <a href="novedades.html">Novedades</a>
+    </nav>
+    <a href="#" class="cta-button">Pedí Online</a>
   </div>
+</header>
+
+<main class="giftcard-page">
+
+  <section class="giftcard-hero-section">
+
+    <!-- Header Row -->
+    <div class="giftcard-header-row">
+      <div class="giftcard-header-left">
+        <span class="giftcard-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.193c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3ZM11.25 12.75H3v6.75a2.25 2.25 0 0 0 2.25 2.25h6v-9ZM12.75 12.75v9h6a2.25 2.25 0 0 0 2.25-2.25v-6.75h-8.25Z" />
+          </svg>
+          Regalo Perfecto
+        </span>
+        <h1 class="giftcard-main-title">
+          Regalá momentos <span class="highlight">dulces</span>
+        </h1>
+        <p class="giftcard-subtitle">
+          Sorprendé a quien más querés con una gift card de Espiga Mágica.
+          Elegí el monto y dejá que disfruten de nuestras delicias artesanales.
+        </p>
+      </div>
+
+      <!-- Page Navigation -->
+      <div class="page-nav" style="margin-top: 60px;">
+        <span class="page-nav-label">Gift Card</span>
+        <div class="page-nav-buttons">
+          <button class="page-nav-btn page-nav-prev" aria-label="Página anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="page-nav-btn page-nav-next" aria-label="Página siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="giftcard-content">
+
+      <!-- Left - Info Card -->
+      <div class="giftcard-info">
+        <div class="giftcard-info-card">
+          <div class="info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+            </svg>
+          </div>
+
+          <h2 class="info-title">Comprá tu Gift Card</h2>
+          <p class="info-text">
+            Elegí el monto que prefieras y personalizá tu tarjeta.
+            La enviamos por email al instante para que puedas regalar cuando quieras.
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <span class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              Montos desde $5.000 hasta $50.000
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              Válida en todas nuestras sucursales
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              Entrega digital instantánea
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              Sin fecha de vencimiento
+            </li>
+          </ul>
+
+          <a href="pago-giftcard.html" class="giftcard-cta-btn">
+            Elegir mi Gift Card
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+
+          <div class="promo-note">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+            </svg>
+            El regalo perfecto para cumpleaños y ocasiones especiales
+          </div>
+        </div>
+      </div>
+
+      <!-- Right - Floating Cards Display -->
+      <div class="giftcard-display">
+        <!-- Decorative particles -->
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+
+        <!-- Gift Card 1 -->
+        <div class="floating-card card-1">
+          <div class="card-top">
+            <div class="card-brand">Espiga Mágica</div>
+            <div class="card-type">Gift Card</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-value">$10.000</span>
+            <div class="card-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.193c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gift Card 2 -->
+        <div class="floating-card card-2">
+          <div class="card-top">
+            <div class="card-brand">Espiga Mágica</div>
+            <div class="card-type">Cumpleaños</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-value">$25.000</span>
+            <div class="card-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15 1.784l-.796.796a1.125 1.125 0 1 0 1.591 0L15 1.784ZM12 1.784l-.796.796a1.125 1.125 0 1 0 1.591 0L12 1.784ZM9 1.784l-.796.796a1.125 1.125 0 1 0 1.591 0L9 1.784ZM9.75 7.547c.498-.021.998-.035 1.5-.042V6.75a.75.75 0 0 1 1.5 0v.755c.502.007 1.002.021 1.5.042V6.75a.75.75 0 0 1 1.5 0v.88l.307.022c1.55.117 2.693 1.427 2.693 2.946v1.018a62.182 62.182 0 0 0-13.5 0v-1.018c0-1.519 1.143-2.829 2.693-2.946l.307-.022v-.88a.75.75 0 0 1 1.5 0v.797ZM12 12.75c-2.472 0-4.9.184-7.274.54-1.454.217-2.476 1.482-2.476 2.916v.384a4.104 4.104 0 0 1 2.585.364 2.605 2.605 0 0 0 2.33 0 4.104 4.104 0 0 1 3.67 0 2.605 2.605 0 0 0 2.33 0 4.104 4.104 0 0 1 3.67 0 2.605 2.605 0 0 0 2.33 0 4.104 4.104 0 0 1 2.585-.364v-.384c0-1.434-1.022-2.7-2.476-2.917A49.138 49.138 0 0 0 12 12.75ZM21.75 18.131a2.604 2.604 0 0 0-1.915.165 4.104 4.104 0 0 1-3.67 0 2.605 2.605 0 0 0-2.33 0 4.104 4.104 0 0 1-3.67 0 2.605 2.605 0 0 0-2.33 0 4.104 4.104 0 0 1-3.67 0 2.604 2.604 0 0 0-1.915-.165v2.494c0 1.035.84 1.875 1.875 1.875h15.75c1.035 0 1.875-.84 1.875-1.875v-2.494Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gift Card 3 -->
+        <div class="floating-card card-3">
+          <div class="card-top">
+            <div class="card-brand">Espiga Mágica</div>
+            <div class="card-type">Aniversario</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-value">$50.000</span>
+            <div class="card-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="giftcard-footer">
+  <p>&copy; 2025 - Espiga Mágica</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
